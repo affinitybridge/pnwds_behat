@@ -5,3 +5,6 @@ default:
     Drupal\DrupalExtension\Extension:
       drush:
         alias: self
+      drupal:
+        # Change this to the absolute path to Drupal install.
+        drupal_root: "/home/travis/build/affinitybridge/drupal"
