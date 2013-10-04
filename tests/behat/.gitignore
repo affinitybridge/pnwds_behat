@@ -1,0 +1,4 @@
+bin
+*.phar
+vendor
+behat.local.yml

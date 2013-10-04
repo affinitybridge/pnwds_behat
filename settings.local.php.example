@@ -1,0 +1,17 @@
+<?php
+
+$databases['default']['default'] = array(
+  'driver' => 'mysql',
+  'database' => 'drupal',
+  'username' => 'root',
+  'password' => '',
+  'host' => 'localhost',
+  'prefix' => '',
+);
+
+// File paths
+$conf['file_public_path'] = 'sites/default/files';
+$conf['file_temporary_path'] = 'sites/default/files/tmp';
+$conf['file_private_path'] = 'sites/default/private_files';
+
+$conf['install_profile'] = 'pnwds_behat';

@@ -1,0 +1,33 @@
+default:
+  paths:
+    features: 'features'
+    bootstrap: 'features/bootstrap'
+  context:
+    parameters:
+      default_browser: 'goutte'
+  extensions:
+    Behat\MinkExtension\Extension:
+      files_path: 'assets'
+      selenium2: ~
+      goutte: ~
+      default_session: goutte
+      javascript_session: selenium2
+    Drupal\DrupalExtension\Extension:
+      api_driver: drupal
+      text:
+        log_out: Log out
+        log_in: Log in
+        password_field: Password
+        username_field: Username
+      blackbox: ~
+
+annotations:
+  paths:
+    features: features/annotations
+
+closures:
+  paths:
+    features: features/closures
+
+imports:
+  - behat.local.yml

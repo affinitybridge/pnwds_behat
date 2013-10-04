@@ -1,0 +1,14 @@
+{
+  "require": {
+    "behat/mink": ">=1.4.0, <1.5.0",
+    "behat/mink-goutte-driver": "dev-master#fa1b073",
+    "behat/mink-selenium2-driver": "1.0.6",
+    "behat/behat": ">=2.4.3, <2.5.0",
+    "behat/mink-extension": "1.1.4",
+    "drupal/drupal-extension": "dev-master#8f52225"
+  },
+    "minimum-stability": "dev",
+    "config": {
+      "bin-dir": "bin/"
+    }
+}

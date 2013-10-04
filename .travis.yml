@@ -1,0 +1,70 @@
+language: php
+
+php:
+  - 5.4
+
+# whitelist
+branches:
+  only:
+    - develop
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+install:
+  - sudo apt-get update > /dev/null
+  - "mysql -e 'create database drupal;'"
+
+  - pear channel-discover pear.drush.org
+  - pear install drush/drush-5.9.0
+  - phpenv rehash
+
+  # Build Behat dependencies
+  - cd ./tests/behat
+  - composer install
+  - cp behat.local.yml.example behat.local.yml
+  - cd ../../../
+
+  # Build Codebase
+  - mkdir private_files
+  - mkdir profiles
+  - mv pnwds_behat profiles/
+  - mkdir drupal
+  - mv profiles drupal/
+
+  # Test the current branch
+  - cd drupal
+  - echo "projects[pnwds_behat][download][branch] = $TRAVIS_BRANCH" >> profiles/pnwds_behat/pnwds_behat_distro.make
+  - drush make profiles/pnwds_behat/pnwds_behat_distro.make --yes
+  - cp profiles/pnwds_behat/settings.php.example sites/default/settings.php
+  - cp profiles/pnwds_behat/settings.local.php.example sites/default/settings.local.php
+  - cd ../
+
+  # Setup files
+  - mkdir drupal/sites/default/files
+  - mkdir drupal/sites/default/private_files
+  - sudo chmod -R 777 drupal/sites/all/modules
+
+  # Setup display for Selenium
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 5
+
+  # Get Selenium
+  - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.33.0.jar
+  - java -jar selenium-server-standalone-2.33.0.jar > /dev/null 2>&1 &
+  - sleep 5
+
+before_script:
+
+  - cd drupal
+  - drush site-install pnwds_behat install_configure_form.update_status_module='array(FALSE,FALSE)' --site-name="PNWDS Behat" --account-mail=admin@testab.com --account-pass=p4ssw0rd --yes
+  - drush runserver --server=builtin 8888 > /dev/null &
+  - sleep 3
+  - cd profiles/pnwds_behat/tests/behat
+
+script:
+
+  - ./bin/behat

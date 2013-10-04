@@ -1,0 +1,2 @@
+Goutte Client
+In order to fix issues with Goutte unable to log in we need to apply this change. https://github.com/fabpot/Goutte/pull/86
