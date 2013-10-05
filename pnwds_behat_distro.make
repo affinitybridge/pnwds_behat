@@ -15,4 +15,4 @@ projects[drupal][patch][995156] = http://drupal.org/files/995156-46_portable_tax
 ; PNWDS Behat Example Profile
 projects[pnwds_behat][type] = profile
 projects[pnwds_behat][download][type] = git
-projects[pnwds_behat][download][url] = http://github.com/smithmilner/pnwds_behat.git
+projects[pnwds_behat][download][url] = http://github.com/affinitybridge/pnwds_behat.git

@@ -7,4 +7,4 @@ default:
         alias: self
       drupal:
         # Change this to the absolute path to Drupal install.
-        drupal_root: "/home/travis/build/smithmilner/drupal"
+        drupal_root: "/home/travis/build/affinitybridge/drupal"
