@@ -7,7 +7,7 @@ One way to use Behat with a Drupal distrobution.
 [Travis CI build history](https://travis-ci.org/affinitybridge/pnwds_behat/builds)
 
 ### Requirements
-* PHP 5.4+
+* PHP 5.4+ (If you would like to use the PHP builtin server drush makes use of)
 * Drush
 * [Selenium Stand Alone Server](http://docs.seleniumhq.org/download/) for javascript tests
 
