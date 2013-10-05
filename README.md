@@ -11,11 +11,11 @@ One way to use Behat with a Drupal distrobution.
 * Drush
 * [Selenium Stand Alone Server](http://docs.seleniumhq.org/download/) for javascript tests
 
-## Build Instructions
+### Build Instructions
 
-We need to build out both the drupal modules and the behat/mink and drupal extension dependencies for the tests.
+We need to build out both the Drupal modules and the behat/mink and Drupal Extension dependencies for the tests.
 
-To build out drupal core and contributed modules we use drush make
+To build out Drupal core and contributed modules we use drush make
 
 ```
 $ ls
@@ -29,10 +29,11 @@ $ drush make profiles/pnwds_behat/pnwds_behat_distro.make --yes
 $ cd profiles/pnwds_behat
 ````
 
-To build out the behat tests first change into the the tests directory and use composer to run the build.
+To build out the behat tests. We first change into the the tests directory and use composer to run the build. For configuration differences copy the example behat.local.yml and add your configuration. Usually you just need to change the local URL of the project and the full path to the root of Drupal.
 
 ```
 $ cd tests/behat
 $ curl http://getcomposer.org/installer | php
 $ php composer.phar install
+$ cp behat.local.yml.example behat.local.yml
 ```
