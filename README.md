@@ -37,3 +37,5 @@ $ curl http://getcomposer.org/installer | php
 $ php composer.phar install
 $ cp behat.local.yml.example behat.local.yml
 ```
+
+[Presentation Slides 2013](https://docs.google.com/presentation/d/1NWW8-mQcJUXkuzFiutCypHtAo7LpKMmpYIJW_sFU8p8/edit?usp=sharing)

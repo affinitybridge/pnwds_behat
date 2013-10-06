@@ -20,6 +20,7 @@ Feature: Article
       | Title         | Edited Test article        |
       | Body          | This is a editted article. |
     And I press "Save"
+    Then I should see the text "Article Edited Test article has been updated."
 
   @api
   Scenario: Assert admin can delete a article.

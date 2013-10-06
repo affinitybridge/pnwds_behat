@@ -2,7 +2,7 @@
 Feature: Basic Page
   I want to check user permissions for basic pages.
 
-  @api
+  @api @javascript
   Scenario: Assert admin can create a page.
     Given I am logged in as a user with the "administrator" role
     When I am on "node/add/page"
@@ -12,7 +12,7 @@ Feature: Basic Page
     And I press "Save"
     Then I should see the text "Basic page Test Page has been created."
 
-  @api
+  @api @javascript
   Scenario: Assert admin can edit a page.
     Given I am logged in as a user with the "administrator" role
     When I am on "node/1/edit"
@@ -20,6 +20,7 @@ Feature: Basic Page
       | Title         | Edited Test Page        |
       | Body          | This is a editted page. |
     And I press "Save"
+    Then I should see the text "Basic page Edited Test Page has been updated."
 
   @api
   Scenario: Assert admin can delete a page.
@@ -44,5 +45,5 @@ Feature: Basic Page
   @api
   Scenario: Assert Anonymous users can see a published page.
     Given I am an anonymous user
-    When I am viewing a "page" node with the title "anonymous user tests"
+    When I am viewing a "page" node with the title "published page tests"
     Then the response status code should be 200
